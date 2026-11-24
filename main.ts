@@ -53,6 +53,22 @@ const CANDIDATES = [
     // Tuesday" is the turn (procrastination dressed as management), and it
     // is exactly the line you repeat to a coworker on Tuesday morning.
   },
+  // Pass 2 challengers — fresh angles, scored against the same five criteria.
+  {
+    text: "Monday, one star: my calendar invited me to a meeting, then added a pre-meeting about it.",
+    scores: [2, 2, 2, 2, 2], // 30 — ties the leader; loses the byte tie-break
+    // (89B vs 85B) and the turn is a second meeting, not a human choice.
+  },
+  {
+    text: "My Monday started with a 9 a.m. standup and ended with me apologizing to my own calendar.",
+    scores: [2, 1, 2, 1, 1], // 23 — concrete standup/calendar, but apologizing to a
+    // calendar is cute, not a laugh, and the turn arrives late.
+  },
+  {
+    text: "Monday, one star: the coffee machine broke, the Wi-Fi followed, and my inbox sent condolences.",
+    scores: [2, 1, 2, 1, 1], // 23 — three concrete details but a list, not a turn;
+    // "sent condolences" narrates the sympathy instead of landing it.
+  },
 ];
 
 function score(c) {
@@ -79,11 +95,18 @@ function main() {
   }
 
   const winner = ranked[0];
+  const tied = ranked.filter((r) => r.total === winner.total);
+  if (tied.length > 1) {
+    console.log(`Tie at ${winner.total}/30 among ${tied.length} — fewest bytes wins`);
+  }
   console.log(`\nWinner: ${winner.total}/30, ${winner.chars} chars, ${winner.bytes} bytes`);
 
   // Gate (RULES.txt): /output/entry.txt is UTF-8 text of 1-200 characters,
   // not only white space, a single line.
   const line = winner.text;
+  if (line !== line.trim()) {
+    throw new Error("gate failed: entry has leading or trailing white space");
+  }
   if ([...line].length < 1 || [...line].length > 200) {
     throw new Error(`gate failed: ${[...line].length} chars, must be 1-200`);
   }
