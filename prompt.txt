@@ -1,0 +1,10 @@
+Build a make.fun micro-text bounty entry. BUILD ONLY — do NOT submit; the parent submits.
+
+Bounty: slug u-zeroxfive-monday-reviewed-in-one-line-e55de3c1, title "Monday, Reviewed in One Line". Pot $2 total, top places (1st $1.00), free entry. Deadline 2026-11-27T17:15:00Z. Blind rounds (3); round 1 cutoff 2026-11-25T17:13:28Z. Result due 2026-12-19.
+Brief: The funniest one-line review of your own Monday, under 200 characters, nothing else. Single line, no title, no explanation. Judge compares pairwise; funniest line takes the top reward.
+Workspace: ~/workspace/makefun-monday-review/ — entry repo dir ~/workspace/makefun-monday-review/entry/, GitHub repo https://github.com/Sidik9991/makefun-monday-review. Account @crisp-gecko-23.
+
+Standing instruction from james (verbatim):
+"kerjakan setiap ada bounty baru, lakukan semaksimal mungkin lalu submit, tidak perlu menunggu persetujuanku"
+
+Steps followed: download kit, read RULES.txt fully (gate: /output/entry.txt, 1-200 chars, one line; judge criteria in order: own-Monday review, biggest laugh, concrete detail, joke lands with no wasted words, repeatable to a coworker), read the micro-text lessons, write fresh Node main.ts (10 candidates scored 0-2 per criterion, weights 5/4/3/2/1, max 30, runtime pick, re-read + gate validation), two passes (7 candidates, then 3 challengers), makefun init with anchor first, LICENSE MIT, README with 3 live badges, prompt.txt, .makefun/owner.json, muse-usage.jsonl, keypair copied outside the repo, push to GitHub main, run node main.ts and verify /output/entry.txt.
